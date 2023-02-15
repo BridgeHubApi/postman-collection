@@ -1,0 +1,800 @@
+{
+	"info": {
+		"_postman_id": "b6dec70c-f6d4-4ce6-a455-171053848c63",
+		"name": "BridgeHub",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "16394053"
+	},
+	"item": [
+		{
+			"name": "APICore",
+			"item": [
+				{
+					"name": "Auth",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.environment.set(\"JwtToken\", pm.response.text());"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "email",
+									"value": "test@example.com",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "test",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{BaseUrl}}/auth",
+							"host": [
+								"{{BaseUrl}}"
+							],
+							"path": [
+								"auth"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "PingExchanges",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{JwtToken}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "{{BaseUrl}}/exchanges/ping?exchanges[]=Binance&exchanges[]=Gate.io",
+							"host": [
+								"{{BaseUrl}}"
+							],
+							"path": [
+								"exchanges",
+								"ping"
+							],
+							"query": [
+								{
+									"key": "exchanges[]",
+									"value": "Binance"
+								},
+								{
+									"key": "exchanges[]",
+									"value": "Gate.io"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Ping",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{BaseUrl}}/ping",
+							"host": [
+								"{{BaseUrl}}"
+							],
+							"path": [
+								"ping"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "APIFront",
+			"item": [
+				{
+					"name": "Register",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.environment.set(\"JwtToken\", pm.response.text());"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "email",
+									"value": "test@example.com",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "C0mp1exP@ssword",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{BaseUrl}}/register",
+							"host": [
+								"{{BaseUrl}}"
+							],
+							"path": [
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Auth",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.environment.set(\"JwtToken\", pm.response.text());"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "email",
+									"value": "test@example.com",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "test",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{BaseUrl}}/auth",
+							"host": [
+								"{{BaseUrl}}"
+							],
+							"path": [
+								"auth"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Ping",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{BaseUrl}}/ping",
+							"host": [
+								"{{BaseUrl}}"
+							],
+							"path": [
+								"ping"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get exchanges",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{BaseUrl}}/exchanges",
+							"host": [
+								"{{BaseUrl}}"
+							],
+							"path": [
+								"exchanges"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get usage history",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{JwtToken}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{BaseUrl}}/usage-history",
+							"host": [
+								"{{BaseUrl}}"
+							],
+							"path": [
+								"usage-history"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get billing informations",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{JwtToken}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{BaseUrl}}/billing-information",
+							"host": [
+								"{{BaseUrl}}"
+							],
+							"path": [
+								"billing-information"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create billing information",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{JwtToken}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "cvc",
+									"value": "999",
+									"type": "text"
+								},
+								{
+									"key": "cardNumber",
+									"value": "1234567890123456",
+									"type": "text"
+								},
+								{
+									"key": "holderName",
+									"value": "Test",
+									"type": "text"
+								},
+								{
+									"key": "expiresAtYear",
+									"value": "2024",
+									"type": "text"
+								},
+								{
+									"key": "expiresAtMonth",
+									"value": "12",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{BaseUrl}}/billing-information",
+							"host": [
+								"{{BaseUrl}}"
+							],
+							"path": [
+								"billing-information"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update billing information",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{JwtToken}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "cvc",
+									"value": "999",
+									"type": "text"
+								},
+								{
+									"key": "cardNumber",
+									"value": "1234567890123456",
+									"type": "text"
+								},
+								{
+									"key": "holderName",
+									"value": "Test",
+									"type": "text"
+								},
+								{
+									"key": "expiresAtYear",
+									"value": "2024",
+									"type": "text"
+								},
+								{
+									"key": "expiresAtMonth",
+									"value": "12",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{BaseUrl}}/billing-information",
+							"host": [
+								"{{BaseUrl}}"
+							],
+							"path": [
+								"billing-information"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete billing information",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{JwtToken}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "{{BaseUrl}}/billing-information",
+							"host": [
+								"{{BaseUrl}}"
+							],
+							"path": [
+								"billing-information"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get subscription plan",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{JwtToken}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{BaseUrl}}/subscription-plan",
+							"host": [
+								"{{BaseUrl}}"
+							],
+							"path": [
+								"subscription-plan"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create subscription plan",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{JwtToken}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "maximumDailyRequests",
+									"value": "100",
+									"type": "text"
+								},
+								{
+									"key": "isMaximumBlocking",
+									"value": "false",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{BaseUrl}}/subscription-plan",
+							"host": [
+								"{{BaseUrl}}"
+							],
+							"path": [
+								"subscription-plan"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create subscription plan Copy",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{JwtToken}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "maximumDailyRequests",
+									"value": "100",
+									"type": "text"
+								},
+								{
+									"key": "isMaximumBlocking",
+									"value": "false",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{BaseUrl}}/subscription-plan",
+							"host": [
+								"{{BaseUrl}}"
+							],
+							"path": [
+								"subscription-plan"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete subscription plan",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{JwtToken}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{BaseUrl}}/subscription-plan",
+							"host": [
+								"{{BaseUrl}}"
+							],
+							"path": [
+								"subscription-plan"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get api keys",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{JwtToken}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{BaseUrl}}/api-keys",
+							"host": [
+								"{{BaseUrl}}"
+							],
+							"path": [
+								"api-keys"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create api keys",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{JwtToken}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "publicKey",
+									"value": "xxxxx",
+									"type": "text"
+								},
+								{
+									"key": "privateKey",
+									"value": "xxxxx",
+									"type": "text"
+								},
+								{
+									"key": "exchangeId",
+									"value": "aa4c5ac2-5a25-11ed-9b6b-4e58cf09bb91",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{BaseUrl}}/api-keys",
+							"host": [
+								"{{BaseUrl}}"
+							],
+							"path": [
+								"api-keys"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update api key",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{JwtToken}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "publicKey",
+									"value": "xxxxx",
+									"type": "text"
+								},
+								{
+									"key": "privateKey",
+									"value": "xxxxx",
+									"type": "text"
+								},
+								{
+									"key": "exchangeId",
+									"value": "aa4c5ac2-5a25-11ed-9b6b-4e58cf09bb91",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{BaseUrl}}/api-keys/:id",
+							"host": [
+								"{{BaseUrl}}"
+							],
+							"path": [
+								"api-keys",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "aa4c5ac2-5a25-11ed-9b6b-4e58cf09bb91"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete api key",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{JwtToken}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{BaseUrl}}/api-keys/:id",
+							"host": [
+								"{{BaseUrl}}"
+							],
+							"path": [
+								"api-keys",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "aa4c5ac2-5a25-11ed-9b6b-4e58cf09bb91"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update user email",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{JwtToken}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "email",
+									"value": "test2@example.com",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{BaseUrl}}/user/email",
+							"host": [
+								"{{BaseUrl}}"
+							],
+							"path": [
+								"user",
+								"email"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update user password",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"url": {
+							"raw": "{{BaseUrl}}/user/password",
+							"host": [
+								"{{BaseUrl}}"
+							],
+							"path": [
+								"user",
+								"password"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
